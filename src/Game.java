@@ -17,7 +17,7 @@ public class Game extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		double speed = 50;
+		double speed = 30;
 		Car car = new Car(1,140,300);
 		Car car2 = new Car(2,100,200);
 		Road road = new Road();
@@ -31,6 +31,7 @@ public class Game extends Application {
 		primaryStage.show(); // Display the stage
 		
 		Timeline animation = new Timeline(new KeyFrame(Duration.millis(speed), e -> road.move()));
+		animation.getKeyFrames().add(new KeyFrame(Duration.millis(speed), e -> car.move()));
 		animation.setCycleCount(Timeline.INDEFINITE);
 		animation.play(); // Start animation
 
@@ -48,6 +49,13 @@ public class Game extends Application {
 				car.moveR();
 			} else if (e.getCode() == KeyCode.LEFT){
 				car.moveL();
+			}
+		});
+		car.setOnKeyReleased(e -> {
+			if (e.getCode() == KeyCode.UP || e.getCode() == KeyCode.DOWN) {
+				car.stopV();
+			} else if (e.getCode() == KeyCode.RIGHT || e.getCode() == KeyCode.LEFT){
+				car.stopH();
 			}
 		});
 		

@@ -39,7 +39,7 @@ public class Road extends Pane {
 	}
 	
 	public void move(){
-		this.y += 1;
+		this.y += 2;
 		for (Line l : this.lanes){
 			l.setLayoutY(this.y);
 		}

@@ -27,24 +27,38 @@ public class Car extends ImageView {
 		
 	}
 	
-	public void moveR(){
-		x += 1;
+	public void move(){
+		this.x = this.x + this.velocityX;
+		this.y = this.y + this.velocityY;
+		
 		this.setLayoutX(x);
+		this.setLayoutY(y);
+	}
+	
+	public void moveR(){
+		this.velocityX = 1;
 	}
 	
 	public void moveL(){
-		x -= 1;
-		this.setLayoutX(x);
+		this.velocityX = -1;
 	}
 	
 	public void moveU(){
-		y -= 1;
-		this.setLayoutY(y);
+		this.velocityY = -1;
 	}
 	
 	public void moveD(){
-		y += 1;
-		this.setLayoutY(y);
+		this.velocityY = 1;
 	}
+
+	public void stopH() {
+		this.velocityX = 0;
+	}
+	
+	public void stopV() {
+		this.velocityY = 0;
+	}
+	
+	
 	
 }
