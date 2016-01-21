@@ -7,6 +7,7 @@ public class Car extends ImageView {
 	private double y;
 	private int velocityX = 0;
 	private int velocityY = 0;
+	private int enabled = 1;
 	
 	/**
 	 * Creates car image.
@@ -27,12 +28,21 @@ public class Car extends ImageView {
 		
 	}
 	
+	public void disable(){
+		this.enabled = 0;
+	}
+	
 	public void move(){
-		this.x = this.x + this.velocityX;
-		this.y = this.y + this.velocityY;
+		this.x = this.x + this.velocityX * this.enabled;
+		this.y = this.y + this.velocityY * this.enabled;
 		
 		this.setLayoutX(x);
 		this.setLayoutY(y);
+	}
+	
+	public void stop(){
+		this.stopH();
+		this.stopV();
 	}
 	
 	public void moveR(){
