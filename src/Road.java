@@ -44,25 +44,18 @@ public class Road extends Pane {
 		}
 	}
 
-	public void detectCollisions(Car car) {
+	public boolean detectCollisions(Car car) {
 		for (Node item : this.getChildren()) {
 
 			//ignore self and lanes
 			if (item != car && !this.lanes.contains(item)) {
 				if (item.getBoundsInParent().intersects(car.getBoundsInParent())) {
-					System.out.println("collison!");
-					Circle boom = new Circle();
-					boom.setCenterX(car.getLayoutX());
-					boom.setCenterY(car.getLayoutY());
 					
-					boom.setRadius(10d);
-					boom.setFill(Color.RED);
-					this.getChildren().add(boom);
-					
-					car.disable();
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 
 }

@@ -15,7 +15,7 @@ public class Car extends ImageView {
 	 * @param posX
 	 * @param posY
 	 */
-	public Car(int no, double posX, double posY){
+	public Car(int no, double posX, double posY, int velocityX, int velocityY){
 		//get car image based on number
 		this.x = posX;
 		this.y = posY;
@@ -23,6 +23,8 @@ public class Car extends ImageView {
 		this.setImage(image);
 		this.setLayoutX(x);
 		this.setLayoutY(y);
+		this.velocityX = velocityX;
+		this.velocityY = velocityY;
 		System.out.println("Car no: " + no + " heigth: " + image.getHeight());
 		System.out.println("Car no: " + no + " width: " + image.getWidth());
 		
@@ -30,6 +32,11 @@ public class Car extends ImageView {
 	
 	public void disable(){
 		this.enabled = 0;
+	}
+	
+	public void explode(){
+		this.image = new Image("file:explosion.jpg");
+		this.setImage(image);
 	}
 	
 	public void move(){
